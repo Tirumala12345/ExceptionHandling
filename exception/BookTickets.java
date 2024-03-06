@@ -6,8 +6,8 @@ public class BookTickets {
     public String userName="1234 1234";
     public String password="1234";
     public int noOfSeats;
-    public int remainingSeats;
-     public int availableSeats=5;
+    public int availableSeats;
+     public int totalNoOfSeats =100   ;
     private int ticketPrice=200;
     private int totalTicketPrice;
     private int balance;
@@ -22,35 +22,34 @@ public class BookTickets {
         return noOfSeats;
     }
 
-    public int getRemainingSeats() {
-        return remainingSeats;
+    public int getAvailableSeats() {
+        return availableSeats;
     }
 
     public void setNoOfSeats(int noOfSeats) {
         this.noOfSeats = noOfSeats;
     }
 
-    public void setRemainingSeats(int remainingSeats) {
-        this.remainingSeats = remainingSeats;
-    }
-
     public void setAvailableSeats(int availableSeats) {
         this.availableSeats = availableSeats;
     }
 
-    public final void bookingTicket(String userName,String password) {
+    public void setTotalNoOfSeats(int totalNoOfSeats) {
+        this.totalNoOfSeats = totalNoOfSeats;
+    }
+
+    public final void bookingTicket(String userName,String password){
          try {
              if (userName.equals(validUsername) && password.equals(validPassword)) {
                  System.out.println("Login Successful");
                  try {
-                     if (noOfSeats <= availableSeats) {
-                         remainingSeats = availableSeats - noOfSeats;
+                     if (noOfSeats <= totalNoOfSeats) {
+                         availableSeats = totalNoOfSeats - noOfSeats;
+                         this.totalNoOfSeats=availableSeats;
                          System.out.println("Booked seats: " + noOfSeats);
-                        // System.out.println(remainingSeats);
-
-
                              totalTicketPrice=noOfSeats*200;
                              System.out.println("Total Ticket Price Is : " +totalTicketPrice );
+
 
 
                              try {
@@ -65,14 +64,14 @@ public class BookTickets {
                                  System.out.println(e.getCode() + "  " + e.getMessage());
 
                              }
-                         System.out.println("Remaining Seats: "+remainingSeats);
+                         System.out.println("Remaining Seats: "+ availableSeats);
 
                      } else {
                          System.out.println("Requested seats: " + noOfSeats);
-                         System.out.println("Available seats: " + availableSeats);
+                         System.out.println("Available seats: " + totalNoOfSeats);
                          System.out.println(ErrorCodes.Invalid_Input.getMessage());
-                         remainingSeats=availableSeats;
-                         System.out.println(remainingSeats);
+                         availableSeats = totalNoOfSeats;
+                         System.out.println(availableSeats);
 
 
                      }
