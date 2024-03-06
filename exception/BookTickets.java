@@ -2,7 +2,7 @@ package exception;
 
 public class BookTickets {
     public String validUsername="1234 1234";
-    public String validPassword="123" ;
+    public String validPassword="1234" ;
     public String userName="1234 1234";
     public String password="1234";
     public int noOfSeats;
@@ -37,14 +37,18 @@ public class BookTickets {
          try {
              if (userName.equals(validUsername) && password.equals(validPassword))  {
                  System.out.println("Login Successful");
-
-                 if (noOfSeats <= availableSeats) {
-                     remainingSeats = availableSeats - noOfSeats;
-                     System.out.println("Booked seats: " + noOfSeats);
-                     System.out.println("Available Seats: " + remainingSeats);
-                 } else {
-                     System.out.println("Requested seats: " + noOfSeats);
-                     System.out.println("Available seats: " + availableSeats);
+                 try {
+                     if (noOfSeats <= availableSeats) {
+                         remainingSeats = availableSeats - noOfSeats;
+                         System.out.println("Booked seats: " + noOfSeats);
+                         System.out.println("Available Seats: " + remainingSeats);
+                     } else {
+                         System.out.println("Requested seats: " + noOfSeats);
+                         System.out.println("Available seats: " + availableSeats);
+                         //throw new InValidInputException(ErrorCodes.Invalid_Input.getCode(),
+                         //ErrorCodes.Invalid_Input.getMessage());
+                     }
+                 }catch (InValidInputException ie){
                      throw new InValidInputException(ErrorCodes.Invalid_Input.getCode(),
                              ErrorCodes.Invalid_Input.getMessage());
                  }
@@ -57,5 +61,4 @@ public class BookTickets {
          }
         return remainingSeats;
     }
-
 }
