@@ -3,11 +3,9 @@ package exception;
 public class BookTickets {
     public String validUsername="1234 1234";
     public String validPassword="1234" ;
-    public String userName="1234 1234";
-    public String password="1234";
     public int noOfSeats;
     public int availableSeats;
-     public int totalNoOfSeats =100   ;
+     public static int totalNoOfSeats =100   ;
     private int ticketPrice=200;
     private int totalTicketPrice;
     private int balance;
