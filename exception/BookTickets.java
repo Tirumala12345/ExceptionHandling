@@ -24,17 +24,6 @@ public class BookTickets {
         return availableSeats;
     }
 
-    public void setNoOfSeats(int noOfSeats) {
-        this.noOfSeats = noOfSeats;
-    }
-
-    public void setAvailableSeats(int availableSeats) {
-        this.availableSeats = availableSeats;
-    }
-
-    public void setTotalNoOfSeats(int totalNoOfSeats) {
-        this.totalNoOfSeats = totalNoOfSeats;
-    }
 
     public final void bookingTicket(String userName,String password){
          try {

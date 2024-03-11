@@ -1,9 +1,9 @@
 package exception;
 
 public enum ErrorCodes {
-    Login_Failed("Login Failed","Invalid Credentials"),
-    Invalid_Input("Input Invalid","Input is not given Properly"),
-    Insufficient_Balance("Payment Failed","Insufficient Balance");
+    Login_Failed("1001","Invalid Credentials"),
+    Invalid_Input("1002","Input is not given Properly"),
+    Insufficient_Balance("1003","Insufficient Balance");
 
     String code;
     String message;
