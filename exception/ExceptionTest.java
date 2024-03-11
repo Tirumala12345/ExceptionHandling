@@ -5,10 +5,10 @@ public class ExceptionTest {
         BookTickets bookTickets=new BookTickets(4,1000);
         bookTickets.bookingTicket("1234 1234","1234");
 
-        BookTickets bookTickets1=new BookTickets(96,100000);
+        BookTickets bookTickets1=new BookTickets(90,10000);
         bookTickets1.bookingTicket("1234 1234","1234");
 
-        BookTickets bookTickets2=new BookTickets(3,100000);
+        BookTickets bookTickets2=new BookTickets(3,1000);
         bookTickets2.bookingTicket("1234 1234","1234");
     }
 }

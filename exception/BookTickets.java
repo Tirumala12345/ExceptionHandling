@@ -48,8 +48,6 @@ public class BookTickets {
                              totalTicketPrice=noOfSeats*200;
                              System.out.println("Total Ticket Price Is : " +totalTicketPrice );
 
-
-
                              try {
                                  if (totalTicketPrice < balance) {
                                      System.out.println("Payment Is Successful");
@@ -60,7 +58,6 @@ public class BookTickets {
                                  }
                              } catch (InsufficientBalanceException e) {
                                  System.out.println(e.getCode() + "  " + e.getMessage());
-
                              }
                          System.out.println("Remaining Seats: "+ availableSeats);
 
@@ -70,8 +67,6 @@ public class BookTickets {
                          System.out.println(ErrorCodes.Invalid_Input.getMessage());
                          availableSeats = totalNoOfSeats;
                          System.out.println(availableSeats);
-
-
                      }
                  } catch (InValidInputException ie) {
 
