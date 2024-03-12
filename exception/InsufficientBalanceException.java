@@ -1,10 +1,12 @@
+// InsufficientBalanceException.java
 package exception;
 
 public class InsufficientBalanceException extends RuntimeException {
     private String code;
-    public InsufficientBalanceException(String code,String message) {
+
+    public InsufficientBalanceException(String code, String message) {
         super(message);
-        this.code=code;
+        this.code = code;
     }
 
     public String getCode() {

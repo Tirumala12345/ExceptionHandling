@@ -1,10 +1,10 @@
-// InValidInputException.java
+// BalanceCheckedException.java
 package exception;
 
-public class InValidInputException extends RuntimeException {
+public class BalanceCheckedException extends Exception {
     private String code;
 
-    public InValidInputException(String code, String message) {
+    public BalanceCheckedException(String code, String message) {
         super(message);
         this.code = code;
     }

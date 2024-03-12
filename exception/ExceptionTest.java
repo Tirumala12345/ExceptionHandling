@@ -8,7 +8,7 @@ public class ExceptionTest {
         BookTickets bookTickets1=new BookTickets(90,10000);
         bookTickets1.bookingTicket("1234 1234","1234");
 
-        BookTickets bookTickets2=new BookTickets(8,2000);
+        BookTickets bookTickets2=new BookTickets(6,2000);
         bookTickets2.bookingTicket("1234 1234","1234");
     }
 }

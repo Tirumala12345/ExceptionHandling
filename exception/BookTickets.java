@@ -1,73 +1,52 @@
+// BookTickets.java
 package exception;
 
 public class BookTickets {
-    public String validUsername="1234 1234";
-    public String validPassword="1234" ;
-    public int noOfSeats;
-    public int availableSeats;
-     public static int totalNoOfSeats =100   ;
-    private int ticketPrice=200;
-    private int totalTicketPrice;
+    private static final String VALID_USERNAME = "1234 1234";
+    private static final String VALID_PASSWORD = "1234";
+    private static final int TICKET_PRICE = 200;
+    private static int totalNoOfSeats = 100;
+
+    private int noOfSeats;
     private int balance;
-    private int remainingBalance;
+    private int totalTicketPrice;
 
-    public BookTickets(int noOfSeats,int balance) {
+    public BookTickets(int noOfSeats, int balance) {
         this.noOfSeats = noOfSeats;
-        this.balance=balance;
+        this.balance = balance;
     }
 
-    public int getNoOfSeats() {
-        return noOfSeats;
-    }
+    public void bookingTicket(String userName, String password)  {
+        if (userName.equals(VALID_USERNAME) && password.equals(VALID_PASSWORD)) {
+            System.out.println("Login Successful");
+            try {
+                if (noOfSeats <= totalNoOfSeats) {
+                    int availableSeats = totalNoOfSeats - noOfSeats;
+                    System.out.println("Booked seats: " + noOfSeats);
+                    totalTicketPrice = noOfSeats * TICKET_PRICE;
+                    System.out.println("Total Ticket Price Is : " + totalTicketPrice);
 
-    public int getAvailableSeats() {
-        return availableSeats;
-    }
+                    if (totalTicketPrice <= balance) {
+                        System.out.println("Payment Is Successful");
+                        int remainingBalance = balance - totalTicketPrice;
+                        System.out.println("Remaining Balance after Payment: " + remainingBalance);
+                    } else {
+                        throw new InsufficientBalanceException("1003", "Insufficient Balance");
+                    }
 
-
-    public final void bookingTicket(String userName,String password){
-         try {
-             if (userName.equals(validUsername) && password.equals(validPassword)) {
-                 System.out.println("Login Successful");
-                 try {
-                     if (noOfSeats <= totalNoOfSeats) {
-                         availableSeats = totalNoOfSeats - noOfSeats;
-                         this.totalNoOfSeats=availableSeats;
-                         System.out.println("Booked seats: " + noOfSeats);
-                             totalTicketPrice=noOfSeats*200;
-                             System.out.println("Total Ticket Price Is : " +totalTicketPrice );
-
-                             try {
-                                 if (totalTicketPrice < balance) {
-                                     System.out.println("Payment Is Successful");
-                                     remainingBalance=balance-totalTicketPrice;
-                                     System.out.println("Remaining Balance after Payment :" +remainingBalance);
-                                 } else {
-                                     System.out.println(ErrorCodes.Insufficient_Balance.getMessage());
-                                 }
-                             } catch (InsufficientBalanceException e) {
-                                 System.out.println(e.getCode() + "  " + e.getMessage());
-                             }
-                         System.out.println("Remaining Seats: "+ availableSeats);
-
-                     } else {
-                         System.out.println("Requested seats: " + noOfSeats);
-                         System.out.println("Available seats: " + totalNoOfSeats);
-                         System.out.println(ErrorCodes.Invalid_Input.getMessage());
-                         availableSeats = totalNoOfSeats;
-                         System.out.println(availableSeats);
-                     }
-                 } catch (InValidInputException ie) {
-
-                     System.out.println(ie.getMessage());
-                 }
-             }
-             else {
-                 throw new InvalidCredentialsException(ErrorCodes.Login_Failed.getCode(),
-                         ErrorCodes.Login_Failed.getMessage());
-             }
-         }catch (InvalidCredentialsException ic){
-             System.out.println(ic.getCode() +"  "+ic.getMessage());
-         }
+                    totalNoOfSeats = availableSeats;
+                    System.out.println("Remaining Seats: " + availableSeats);
+                } else {
+                    System.out.println("Requested seats: " + noOfSeats);
+                    System.out.println("Available seats: " + totalNoOfSeats);
+                    System.out.println(ErrorCodes.Invalid_Input.getMessage());
+                }
+            } catch (InValidInputException ie) {
+                System.out.println(ie.getMessage());
+            }
+        } else {
+            throw new InvalidCredentialsException(ErrorCodes.Login_Failed.getCode(),
+                    ErrorCodes.Login_Failed.getMessage());
+        }
     }
 }
