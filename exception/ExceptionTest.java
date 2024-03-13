@@ -2,7 +2,7 @@ package exception;
 
 public class ExceptionTest {
     public static void main(String[] args) {
-        PaymentService paymentService=new PaymentService("1234","1234",10,1000);
+        PaymentService paymentService=new PaymentService("1234","1234",10,3000);
         try{
             paymentService.login("1234","1234");
             paymentService.bookingTicket();
