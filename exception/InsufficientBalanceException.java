@@ -1,7 +1,7 @@
-// InsufficientBalanceException.java
+
 package exception;
 
-public class InsufficientBalanceException extends RuntimeException {
+public class InsufficientBalanceException extends Exception {
     private String code;
 
     public InsufficientBalanceException(String code, String message) {
