@@ -23,7 +23,6 @@ public class PaymentService extends BookTickets {
                 throw new InsufficientBalanceException(ErrorCodes.Insufficient_Balance.getCode(),
                         ErrorCodes.Insufficient_Balance.getMessage());
             }
-
         }
         return false;
     }
