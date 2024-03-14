@@ -3,7 +3,7 @@ package exception;
 
 public class BookTickets extends LoginProcess {
     public int noOfSeats;
-    public int totalNoOfSeats = 10;
+    public static int totalNoOfSeats = 10;
 
     public BookTickets(String validUserName, String validPassword, int noOfSeats) {
         super(validUserName, validPassword);
